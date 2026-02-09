@@ -154,7 +154,7 @@ func main() {
 	// 执行入口程序（如果指定）
 	if entry != "" {
 		logger.Printf("Executing entry program: %s", entry)
-		
+
 		// 规范化目标目录路径
 		destAbs, err := filepath.Abs(dest)
 		if err != nil {
@@ -163,7 +163,7 @@ func main() {
 			// 构建入口程序的完整路径
 			entryPath := filepath.Join(dest, entry)
 			logger.Printf("Entry program full path: %s", entryPath)
-			
+
 			// 检查入口程序是否存在
 			if _, err := os.Stat(entryPath); os.IsNotExist(err) {
 				logger.Printf("Entry program not found: %s", entryPath)
@@ -181,28 +181,28 @@ func main() {
 						logger.Printf("Entry program path is outside destination directory, refusing to execute: %s", absEntryPath)
 					} else {
 						logger.Printf("Entry program absolute path: %s", absEntryPath)
-						
+
 						// 准备命令
 						var cmd *exec.Cmd
-						
+
 						// 在 Windows 上，对于批处理文件，需要通过 cmd.exe 来执行
 						if strings.HasSuffix(strings.ToLower(absEntryPath), ".bat") || strings.HasSuffix(strings.ToLower(absEntryPath), ".cmd") {
 							cmd = exec.Command("cmd.exe", "/c", absEntryPath)
 						} else {
 							cmd = exec.Command(absEntryPath)
 						}
-						
+
 						// 设置工作目录
 						cmd.Dir = destAbs
-						
+
 						// 传递环境变量（包括0install环境变量）
 						cmd.Env = os.Environ()
-						
+
 						// 设置标准输入/输出/错误
 						cmd.Stdin = os.Stdin
 						cmd.Stdout = os.Stdout
 						cmd.Stderr = os.Stderr
-						
+
 						// 执行命令并处理退出代码
 						err = cmd.Run()
 						if cmd.ProcessState != nil {
