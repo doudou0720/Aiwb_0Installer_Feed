@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="feed.xsl"?>
+<interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://zero-install.sourceforge.net/2004/injector/interface https://docs.0install.net/specifications/feed.xsd http://0install.de/schema/desktop-integration/capabilities https://docs.0install.net/specifications/capabilities.xsd" uri="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/Inkeys.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>智绘教Inkeys</name>
+  <summary xml:lang="zh-CN">将你的创意随心所欲地书写在屏幕的任意角落。</summary>
+  <description xml:lang="zh-CN">将你的创意随心所欲地书写在屏幕的任意角落。
+智绘教Inkeys 拥有丝滑流畅的高性能画笔、丰富强大的功能，以及众多贴心小设计，全面提升你的效率与使用体验。
+软件基于 C++20 编写，专为 Windows 平台打造。</description>
+  <icon href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/res/Inkeys.ico" type="image/vnd.microsoft.icon" />
+  <icon href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/res/Inkeys.png" type="image/png" />
+  <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations">屏幕批注</category>
+  <homepage>https://www.inkeys.top/</homepage>
+  <implementation arch="Windows-x86_64" version="2026.2.6" id="sha256new_PZEDXD4NCKEGVGALQGFY3JVGV5WWLXTZDKMALOUO5ZVDHTFW5ABA">
+    <command name="run" path="go_wrapper.exe" />
+    <manifest-digest sha256new="PZEDXD4NCKEGVGALQGFY3JVGV5WWLXTZDKMALOUO5ZVDHTFW5ABA" />
+    <recipe>
+      <archive href="https://gh-proxy.com/github.com/Alan-CRL/Inkeys/releases/download/20260206a/Inkeys20260206a-x64.zip" size="19209901" type="application/zip" extract="Inkeys64" />
+      <file href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" size="947712" dest="go_wrapper.exe" executable="true" />
+      <file href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/wrapper.config.json" size="71" dest="wrapper.config.json" />
+    </recipe>
+  </implementation>
+  <entry-point command="run" binary-name="Inkeys" />
+</interface>
+<!-- Base64 Signature
+iQEcBAABAgAGBQJpiyVjAAoJEHHhcGtCAT0xvtEIALzL9mOrvRIVZTtsl1F58m2e1JEQWDZkXwvXfUJR24sXyNpw/ifbOolTyDrvB6eh/UmCoNMF0LIjF1wIAWdu2pYwOHg7J8J3GzlBR5UTlecivJOb62YLcMEdoqk6qkxYB6SmXrcdIFFkEo4YXxsDscO0OwEo/L9WiCD7bfW5kQiXujTZtswONmOn54gQdiJ0r5vmutd3DztAroUBuUEyqESF1I5uhtoFSrpKm6pvWAHkgOr7mNcjQDU8Pm/Q+pIxZbh6MNgcC39Uyn6x5plzm1yf0E//ZegdXikBiN6CaASABy4cEg+ezSgLoZQzzcS6wK7A24aRdh7C8Ju045mfXAY=
+
+-->
