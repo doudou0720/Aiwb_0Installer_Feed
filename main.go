@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"os/user"
 	"path/filepath"
 	"strings"
 	"sync"
@@ -15,6 +16,7 @@ import (
 // Config 配置结构体，对应wrapper.config.json文件
 type Config struct {
 	Dest     string `json:"dest"`
+	Name     string `json:"name"`
 	Force    bool   `json:"force"`
 	LogLevel string `json:"log-level"`
 	Entry    string `json:"entry"`
@@ -24,6 +26,7 @@ type Config struct {
 var (
 	source      string
 	dest        string
+	name        string
 	force       bool
 	logLevel    string
 	entry       string
@@ -47,14 +50,20 @@ func init() {
 		fmt.Fprintln(os.Stderr, "Options:")
 		flag.PrintDefaults()
 		fmt.Fprintln(os.Stderr, "\nExamples:")
-		fmt.Fprintln(os.Stderr, "  # Basic usage")
+		fmt.Fprintln(os.Stderr, "  # Basic usage (default dest: user's Aiwb_Application folder)")
+		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe")
+		fmt.Fprintln(os.Stderr, "\n  # With custom destination")
 		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -dest /path/to/writable/dir")
+		fmt.Fprintln(os.Stderr, "\n  # With subdirectory name")
+		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -name myapp")
+		fmt.Fprintln(os.Stderr, "  # or")
+		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -dest /path/to/writable/dir -name myapp")
 		fmt.Fprintln(os.Stderr, "\n  # Force sync")
-		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -dest /path/to/writable/dir -force")
+		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -force")
 		fmt.Fprintln(os.Stderr, "\n  # Set log level")
-		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -dest /path/to/writable/dir -log-level debug")
+		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -log-level debug")
 		fmt.Fprintln(os.Stderr, "\n  # Execute entry program after sync")
-		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -dest /path/to/writable/dir -entry bin/app.exe")
+		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -entry bin/app.exe")
 	}
 
 	// 获取当前目录（源目录）
@@ -62,6 +71,16 @@ func init() {
 	currentDir, err = os.Getwd()
 	if err != nil {
 		log.Fatalf("Failed to get current directory: %v", err)
+	}
+
+	// 设置默认dest值为用户文件夹下的Aiwb_Application
+	if dest == "" {
+		usr, err := user.Current()
+		if err != nil {
+			log.Printf("Warning: Failed to get current user: %v", err)
+		} else {
+			dest = filepath.Join(usr.HomeDir, "Aiwb_Application")
+		}
 	}
 
 	// 检查wrapper.config.json文件是否存在
@@ -85,6 +104,9 @@ func init() {
 				if config.Dest != "" {
 					dest = config.Dest
 				}
+				if config.Name != "" {
+					name = config.Name
+				}
 				force = config.Force
 				if config.LogLevel != "" {
 					logLevel = config.LogLevel
@@ -97,7 +119,8 @@ func init() {
 	}
 
 	// 命令行参数解析（优先级高于配置文件）
-	flag.StringVar(&dest, "dest", dest, "Target writable directory path (required)")
+	flag.StringVar(&dest, "dest", dest, "Target writable directory path (default: user's Aiwb_Application folder)")
+	flag.StringVar(&name, "name", name, "Subdirectory name under destination (optional)")
 	flag.BoolVar(&force, "force", force, "Force sync, ignore version check")
 	flag.StringVar(&logLevel, "log-level", logLevel, "Log level (debug, info, warn, error)")
 	flag.StringVar(&entry, "entry", entry, "Relative path to entry program to execute after sync")
@@ -105,8 +128,12 @@ func init() {
 
 	// 验证必需参数
 	if dest == "" {
-		flag.Usage()
-		os.Exit(1)
+		log.Fatalf("Error: Destination directory not set and failed to get user home directory")
+	}
+
+	// 如果指定了name，则构建完整的目标路径
+	if name != "" {
+		dest = filepath.Join(dest, name)
 	}
 
 	// 初始化日志
