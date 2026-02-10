@@ -7,7 +7,7 @@
 
   <homepage>https://www.classisland.tech/</homepage>
 
-  <feed-for interface="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/feeds/schedule/ClassIsland-v2/ClassIsland.v2.xml"/>
+  <feed-for interface="https://cdn.gh-proxy.com/https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/ClassIsland.v2.xml"/>
 
   <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.ico" type="image/vnd.microsoft.icon" />
   <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.png" type="image/png" />
@@ -25,7 +25,7 @@
       <recipe>
         <archive href="https://cdn.gh-proxy.com/github.com/ClassIsland/ClassIsland/releases/download/{version}/ClassIsland_app_windows_x64_full_folder.zip" />
         <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" dest="go_wrapper.exe" executable="true" />
-        <file href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" dest="wrapper.config.json" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" dest="wrapper.config.json" />
       </recipe>
     </implementation>
   </group>
