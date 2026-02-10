@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="feed.xsl"?>
+<interface xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://zero-install.sourceforge.net/2004/injector/interface https://docs.0install.net/specifications/feed.xsd http://0install.de/schema/desktop-integration/capabilities https://docs.0install.net/specifications/capabilities.xsd" uri="https://cdn.gh-proxy.com/https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/ClassIsland.v2.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>ClassIsland 2.x</name>
+  <summary xml:lang="zh-CN">ClassIsland 是一款适用于班级多媒体屏幕的课表信息显示工具</summary>
+  <description xml:lang="zh-CN">ClassIsland 是一款适用于班级多媒体屏幕的课表信息显示工具，可以在 Windows 屏幕上显示各种信息。本应用的名字灵感源于 iOS 灵动岛（Dynamic Island）功能。可显示当天的课表、当前进行课程的信息，在上下课等重要时间点发出提醒，自选搭配音效、强调特效和语音增强提醒。</description>
+  <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.ico" type="image/vnd.microsoft.icon" />
+  <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.png" type="image/png" />
+  <splash-screen href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/banner.png" type="image/png" />
+  <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule">课表与看板类软件</category>
+  <homepage>https://www.classisland.tech/</homepage>
+  <group license="OSI Approved :: GNU General Public License version 3 (GPL v3)">
+    <requires os="Windows" interface="https://apps.0install.net/dotnet/windowsdesktop-runtime.xml" version="8.0.0..!8.1">
+      <command name="run" path="go_wrapper.exe" />
+    </requires>
+    <implementation arch="Windows-x86_64" version="2.0.0.0" id="sha256new_AIF7MIGKDWTN5E5SC3XD2NSUFJGEVNO5QFLWAQ5JUPKUFTEYU6RA">
+      <command name="run" path="go_wrapper.exe" />
+      <manifest-digest sha256new="AIF7MIGKDWTN5E5SC3XD2NSUFJGEVNO5QFLWAQ5JUPKUFTEYU6RA" />
+      <recipe>
+        <archive href="https://cdn.gh-proxy.com/github.com/ClassIsland/ClassIsland/releases/download/2.0.0.0/ClassIsland_app_windows_x64_full_folder.zip" size="65005368" type="application/zip" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" size="947712" dest="go_wrapper.exe" executable="true" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" size="85" dest="wrapper.config.json" />
+      </recipe>
+    </implementation>
+    <implementation arch="Windows-x86_64" version="2.0.0.1" id="sha256new_SNKED77K5HBMTHX43FMUQO3N6RX7GVU3D63RZT34RHNF7VZOYRQA">
+      <command name="run" path="go_wrapper.exe" />
+      <manifest-digest sha256new="SNKED77K5HBMTHX43FMUQO3N6RX7GVU3D63RZT34RHNF7VZOYRQA" />
+      <recipe>
+        <archive href="https://cdn.gh-proxy.com/github.com/ClassIsland/ClassIsland/releases/download/2.0.0.1/ClassIsland_app_windows_x64_full_folder.zip" size="65588656" type="application/zip" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" size="947712" dest="go_wrapper.exe" executable="true" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" size="85" dest="wrapper.config.json" />
+      </recipe>
+    </implementation>
+    <implementation arch="Windows-x86_64" version="2.0.0.2" id="sha256new_4AWIETHCEOFEH66BKBPGWTU2WHJ66ZXLU23Y2BS23TSRZOWZZBWA">
+      <command name="run" path="go_wrapper.exe" />
+      <manifest-digest sha256new="4AWIETHCEOFEH66BKBPGWTU2WHJ66ZXLU23Y2BS23TSRZOWZZBWA" />
+      <recipe>
+        <archive href="https://cdn.gh-proxy.com/github.com/ClassIsland/ClassIsland/releases/download/2.0.0.2/ClassIsland_app_windows_x64_full_folder.zip" size="65585836" type="application/zip" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" size="947712" dest="go_wrapper.exe" executable="true" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" size="85" dest="wrapper.config.json" />
+      </recipe>
+    </implementation>
+    <implementation arch="Windows-x86_64" version="2.0.1.0" id="sha256new_W7CKXNMPSZT243PYDQIMJKRICJK4QSP2OIJDBIMOP5672RELA77Q">
+      <command name="run" path="go_wrapper.exe" />
+      <manifest-digest sha256new="W7CKXNMPSZT243PYDQIMJKRICJK4QSP2OIJDBIMOP5672RELA77Q" />
+      <recipe>
+        <archive href="https://cdn.gh-proxy.com/github.com/ClassIsland/ClassIsland/releases/download/2.0.1.0/ClassIsland_app_windows_x64_full_folder.zip" size="65903787" type="application/zip" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" size="947712" dest="go_wrapper.exe" executable="true" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" size="85" dest="wrapper.config.json" />
+      </recipe>
+    </implementation>
+    <implementation arch="Windows-x86_64" version="2.0.1.1" id="sha256new_BIQXFVC3VMVHU5PK7N2A4EF5RO5ACCICAE4OE4DNUCCOAB2QAS2A">
+      <command name="run" path="go_wrapper.exe" />
+      <manifest-digest sha256new="BIQXFVC3VMVHU5PK7N2A4EF5RO5ACCICAE4OE4DNUCCOAB2QAS2A" />
+      <recipe>
+        <archive href="https://cdn.gh-proxy.com/github.com/ClassIsland/ClassIsland/releases/download/2.0.1.1/ClassIsland_app_windows_x64_full_folder.zip" size="65931585" type="application/zip" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" size="947712" dest="go_wrapper.exe" executable="true" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" size="85" dest="wrapper.config.json" />
+      </recipe>
+    </implementation>
+    <implementation arch="Windows-x86_64" version="2.0.2.0" id="sha256new_KMRMZXZPZGXAYLBUJGEKXFJDPVQI45NDODFIMFSTSBEIT63TOMBQ">
+      <command name="run" path="go_wrapper.exe" />
+      <manifest-digest sha256new="KMRMZXZPZGXAYLBUJGEKXFJDPVQI45NDODFIMFSTSBEIT63TOMBQ" />
+      <recipe>
+        <archive href="https://cdn.gh-proxy.com/github.com/ClassIsland/ClassIsland/releases/download/2.0.2.0/ClassIsland_app_windows_x64_full_folder.zip" size="66017283" type="application/zip" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" size="947712" dest="go_wrapper.exe" executable="true" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" size="85" dest="wrapper.config.json" />
+      </recipe>
+    </implementation>
+  </group>
+  <entry-point command="run" binary-name="go_wrapper.exe" />
+</interface>
+<!-- Base64 Signature
+iQEaBAABAgAGBQJpi09nAAoJEHHhcGtCAT0xqIAH8MiKgrIByrB88Dk40oQSVyqcg/eOWBaKPksfdK8CgKLyAMjviG8AfEcSNj1fSbE3FxJpSTaqb4aKQtf3eTvLfACNBz0MT3fXxK2pbi82m0ldGk6kIyPg/kMmCuM3uL+l12aspmZYXCaVjoU08ADDD1iq66NGF3ju3EkkA0f3sw6O8XG4b2ulNMiHp3PZMie7zWWNDTD5H9jKK1z9WVMl+gBuKLxDmfsuihrKH26GsPbtipdXjmubG5xLiFg2oMnBzKJOtwB+l36P0ZHqKIwPNXFksYShFf87Xt2yoSS509LP1VHwTA6LfVCameq+MrFeytCyCnoRPhpt5OLhB0ys
+
+-->

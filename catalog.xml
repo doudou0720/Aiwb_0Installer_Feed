@@ -1,15 +1,32 @@
-<?xml version='1.0'?>
-<catalog xmlns='http://0install.de/schema/injector/catalog'>
-  <interface uri='https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/Inkeys.xml' xmlns='http://zero-install.sourceforge.net/2004/injector/interface'>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="catalog.xsl"?>
+<catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://0install.de/schema/injector/catalog https://docs.0install.net/specifications/catalog.xsd" xmlns="http://0install.de/schema/injector/catalog">
+  <interface uri="https://cdn.gh-proxy.com/https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/ClassIsland.v2.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+    <name>ClassIsland 2.x</name>
+    <summary xml:lang="zh-CN">ClassIsland 是一款适用于班级多媒体屏幕的课表信息显示工具</summary>
+    <description xml:lang="zh-CN">ClassIsland 是一款适用于班级多媒体屏幕的课表信息显示工具，可以在 Windows 屏幕上显示各种信息。本应用的名字灵感源于 iOS 灵动岛（Dynamic Island）功能。可显示当天的课表、当前进行课程的信息，在上下课等重要时间点发出提醒，自选搭配音效、强调特效和语音增强提醒。</description>
+    <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.ico" type="image/vnd.microsoft.icon" />
+    <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.png" type="image/png" />
+    <splash-screen href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/banner.png" type="image/png" />
+    <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule">课表与看板类软件</category>
+    <homepage>https://www.classisland.tech/</homepage>
+    <entry-point command="run" binary-name="go_wrapper.exe" />
+  </interface>
+  <interface uri="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/Inkeys.xml" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
     <name>智绘教Inkeys</name>
-    <summary xml:lang='zh-CN'>将你的创意随心所欲地书写在屏幕的任意角落。</summary>
-    <description xml:lang='zh-CN'>将你的创意随心所欲地书写在屏幕的任意角落。
+    <summary xml:lang="zh-CN">将你的创意随心所欲地书写在屏幕的任意角落。</summary>
+    <description xml:lang="zh-CN">将你的创意随心所欲地书写在屏幕的任意角落。
 智绘教Inkeys 拥有丝滑流畅的高性能画笔、丰富强大的功能，以及众多贴心小设计，全面提升你的效率与使用体验。
 软件基于 C++20 编写，专为 Windows 平台打造。</description>
+    <icon href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/res/Inkeys.ico" type="image/vnd.microsoft.icon" />
+    <icon href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/res/Inkeys.png" type="image/png" />
+    <splash-screen href="https://gh-proxy.com/raw.githubusercontent.com/Alan-CRL/Inkeys/main/GithubRes/cover2.png" type="image/png" />
+    <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations">屏幕批注</category>
     <homepage>https://www.inkeys.top/</homepage>
-    <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations" xmlns="http://zero-install.sourceforge.net/2004/injector/interface">屏幕批注</category>
-    <icon href='https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/res/Inkeys.ico' type='image/vnd.microsoft.icon' />
-    <icon href='https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/res/Inkeys.png' type='image/png' />
-    <entry-point command='run' binary-name='Inkeys' />
+    <entry-point command="run" binary-name="Inkeys" />
   </interface>
 </catalog>
+<!-- Base64 Signature
+iQEcBAABAgAGBQJpi1oHAAoJEHHhcGtCAT0x+pIH/3/tykUZoRXTfbv5w1JjahnGF1NLq2mCHioReKxV0tuCserDpt5FoF/DCFvBm755T/vAzSWliS0lczosSpPi/AN6hCnp8/KKB8OdQ3ZpY4UKrO3Xh+A3fBcxv2PavPh1XxjG/pdHb6cgm+eq1lSpqaG9J7wVpDyiqh1M+iBuY1QYHYbc49ixjhyiqGpvCmsXiSMmN/qHubGRtInRaFKMZmYYiZ0nmAjrksfMg4i4RVW+8T0hFNDjDM7zEy6Z7p7HBwh0wvMHxzhnOJmjmSxsa0/zvtvtEghNX3PKw9JjViIt+95j23NlAKew9l44kWkq4d+aWDHxS0QnvgW8jAfz3KQ=
+
+-->
