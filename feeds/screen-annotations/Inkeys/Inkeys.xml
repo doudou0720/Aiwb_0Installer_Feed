@@ -8,6 +8,7 @@
 软件基于 C++20 编写，专为 Windows 平台打造。</description>
   <icon href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/res/Inkeys.ico" type="image/vnd.microsoft.icon" />
   <icon href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations/Inkeys/res/Inkeys.png" type="image/png" />
+  <splash-screen href="https://gh-proxy.com/raw.githubusercontent.com/Alan-CRL/Inkeys/main/GithubRes/cover2.png" type="image/png" />
   <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations">屏幕批注</category>
   <homepage>https://www.inkeys.top/</homepage>
   <implementation arch="Windows-x86_64" version="2026.2.6" id="sha256new_PZEDXD4NCKEGVGALQGFY3JVGV5WWLXTZDKMALOUO5ZVDHTFW5ABA">
@@ -22,6 +23,6 @@
   <entry-point command="run" binary-name="Inkeys" />
 </interface>
 <!-- Base64 Signature
-iQEcBAABAgAGBQJpiyVjAAoJEHHhcGtCAT0xvtEIALzL9mOrvRIVZTtsl1F58m2e1JEQWDZkXwvXfUJR24sXyNpw/ifbOolTyDrvB6eh/UmCoNMF0LIjF1wIAWdu2pYwOHg7J8J3GzlBR5UTlecivJOb62YLcMEdoqk6qkxYB6SmXrcdIFFkEo4YXxsDscO0OwEo/L9WiCD7bfW5kQiXujTZtswONmOn54gQdiJ0r5vmutd3DztAroUBuUEyqESF1I5uhtoFSrpKm6pvWAHkgOr7mNcjQDU8Pm/Q+pIxZbh6MNgcC39Uyn6x5plzm1yf0E//ZegdXikBiN6CaASABy4cEg+ezSgLoZQzzcS6wK7A24aRdh7C8Ju045mfXAY=
+iQEcBAABAgAGBQJpiynUAAoJEHHhcGtCAT0xpnMH/0G8d0L50j9MQ5oVpsOHO28T2WrDgbiQ1F18Uji2CBw5q/yf1yEvZxIM4JbWQIRBqzcGS2rLNAf+T2cyF4/dhfHefDJGEEa/e1RwTH0vpbOJUn9gND+6/RcE5zfbmdepvzS4WkFjMuJatyydC9QBLc2rdPx0JNGV3vRRmDa1mUpTXju5SwCM3lJB60Wj6tkmpoh5Ip7z1j9TNN6P8MIl1NU5smgym19KXnIrCXD4GOsQPRghqDJdmSRar7QTYOfFNYdI1uMEbrRlCvRADj604uatMzbsl4blv/QG9rBDBYEBac2zAET1DdaGCg0YokOmu7RkM5zzSL1A3/K9BYC8UeM=
 
 -->

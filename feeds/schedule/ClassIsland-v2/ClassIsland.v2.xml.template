@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>ClassIsland 2.x</name>
+  <summary xml:lang="zh-CN">ClassIsland 是一款适用于班级多媒体屏幕的课表信息显示工具</summary>
+
+  <description xml:lang="zh-CN">ClassIsland 是一款适用于班级多媒体屏幕的课表信息显示工具，可以在 Windows 屏幕上显示各种信息。本应用的名字灵感源于 iOS 灵动岛（Dynamic Island）功能。可显示当天的课表、当前进行课程的信息，在上下课等重要时间点发出提醒，自选搭配音效、强调特效和语音增强提醒。</description>
+
+  <homepage>https://www.classisland.tech/</homepage>
+
+  <feed-for interface="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/feeds/schedule/ClassIsland-v2/ClassIsland.v2.xml"/>
+
+  <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.ico" type="image/vnd.microsoft.icon" />
+  <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.png" type="image/png" />
+  <splash-screen href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/banner.png" type="image/png" />
+  <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule">课表与看板类软件</category>
+
+  <group license="OSI Approved :: GNU General Public License version 3 (GPL v3)">
+    <command name="run" path="go_wrapper.exe">
+      <requires interface="https://apps.0install.net/dotnet/windowsdesktop-runtime.xml" version="8.0.0..!8.1" />
+    </command>
+
+    <implementation arch="Windows-x86_64" version="{version}">
+      <command name="run" path="go_wrapper.exe" />
+      <manifest-digest/>
+      <recipe>
+        <archive href="https://cdn.gh-proxy.com/github.com/ClassIsland/ClassIsland/releases/download/{version}/ClassIsland_app_windows_x64_full_folder.zip" />
+        <file href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/go_wrapper/go_wrapper.exe" dest="go_wrapper.exe" executable="true" />
+        <file href="https://gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/wrapper.config.json" dest="wrapper.config.json" />
+      </recipe>
+    </implementation>
+  </group>
+</interface>
