@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface" uri="https://cdn.gh-proxy.com/https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/ClassIsland.v2.xml">
   <name>ClassIsland 2.x</name>
   <summary xml:lang="zh-CN">ClassIsland 是一款适用于班级多媒体屏幕的课表信息显示工具</summary>
 
@@ -7,17 +7,15 @@
 
   <homepage>https://www.classisland.tech/</homepage>
 
-  <feed-for interface="https://cdn.gh-proxy.com/https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/ClassIsland.v2.xml"/>
-
   <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.ico" type="image/vnd.microsoft.icon" />
   <icon href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/ClassIsland.png" type="image/png" />
   <splash-screen href="https://cdn.gh-proxy.com/github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule/ClassIsland-v2/res/banner.png" type="image/png" />
   <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule">课表与看板类软件</category>
 
   <group license="OSI Approved :: GNU General Public License version 3 (GPL v3)">
-    <command name="run" path="go_wrapper.exe">
-      <requires interface="https://apps.0install.net/dotnet/windowsdesktop-runtime.xml" version="8.0.0..!8.1" />
-    </command>
+    <requires interface="https://apps.0install.net/dotnet/windowsdesktop-runtime.xml" version="8.0.0..!8.1">
+      <command name="run" path="go_wrapper.exe">
+    </requires>
 
     <implementation arch="Windows-x86_64" version="{version}">
       <command name="run" path="go_wrapper.exe" />

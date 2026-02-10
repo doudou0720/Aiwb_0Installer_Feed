@@ -10,9 +10,9 @@
   <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/schedule">课表与看板类软件</category>
   <homepage>https://www.classisland.tech/</homepage>
   <group license="OSI Approved :: GNU General Public License version 3 (GPL v3)">
-    <command name="run" path="go_wrapper.exe">
-      <requires interface="https://apps.0install.net/dotnet/windowsdesktop-runtime.xml" version="8.0.0..!8.1" />
-    </command>
+    <requires os="Windows" interface="https://apps.0install.net/dotnet/windowsdesktop-runtime.xml" version="8.0.0..!8.1">
+      <command name="run" path="go_wrapper.exe" />
+    </requires>
     <implementation arch="Windows-x86_64" version="2.0.0.0" id="sha256new_AIF7MIGKDWTN5E5SC3XD2NSUFJGEVNO5QFLWAQ5JUPKUFTEYU6RA">
       <command name="run" path="go_wrapper.exe" />
       <manifest-digest sha256new="AIF7MIGKDWTN5E5SC3XD2NSUFJGEVNO5QFLWAQ5JUPKUFTEYU6RA" />
@@ -68,8 +68,9 @@
       </recipe>
     </implementation>
   </group>
+  <entry-point command="run" binary-name="go_wrapper.exe" />
 </interface>
 <!-- Base64 Signature
-iQEcBAABAgAGBQJpi0uUAAoJEHHhcGtCAT0xiRgH/3nRJCP+Tcvu5n9AS8u6dohYPSyCcpONsMO3u8pxtQ38ICVtbIq/PgFacYqfGys41lqMz2X2Lq3wYeXNwBKHfnGJu5mvTq9Ena7OuUtAfpru/5UVW30xr+dxMAMuXHKgVdgA8RIUYLQQr/IJ9homVFVlO/Ix3yWCgsI3nUv5bHFsUiy3v2Y0qsXZZkExMMpQ51Mdy6SigUROqnds1Ul3FBPlP3DtKRmDPybsJhHJF1MoTnVOFnC6mMAV2JHCh7ct+WftJHrgwufqkIyXDczustGJ48Jgp499dC4vzr+qwuZY1ir9s89b+L2ATVqf1NPed7pdR9rOnD4pEedXUZRi1z8=
+iQEaBAABAgAGBQJpi09nAAoJEHHhcGtCAT0xqIAH8MiKgrIByrB88Dk40oQSVyqcg/eOWBaKPksfdK8CgKLyAMjviG8AfEcSNj1fSbE3FxJpSTaqb4aKQtf3eTvLfACNBz0MT3fXxK2pbi82m0ldGk6kIyPg/kMmCuM3uL+l12aspmZYXCaVjoU08ADDD1iq66NGF3ju3EkkA0f3sw6O8XG4b2ulNMiHp3PZMie7zWWNDTD5H9jKK1z9WVMl+gBuKLxDmfsuihrKH26GsPbtipdXjmubG5xLiFg2oMnBzKJOtwB+l36P0ZHqKIwPNXFksYShFf87Xt2yoSS509LP1VHwTA6LfVCameq+MrFeytCyCnoRPhpt5OLhB0ys
 
 -->

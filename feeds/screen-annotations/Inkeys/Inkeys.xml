@@ -12,6 +12,7 @@
   <category type="https://github.com/doudou0720/Aiwb_0Installer_Feed/raw/refs/heads/windows-feeds/feeds/screen-annotations">屏幕批注</category>
   <homepage>https://www.inkeys.top/</homepage>
   <implementation arch="Windows-x86_64" version="2026.2.6" id="sha256new_PZEDXD4NCKEGVGALQGFY3JVGV5WWLXTZDKMALOUO5ZVDHTFW5ABA">
+    <requires os="Windows" interface="https://apps.0install.net/dotnet/clr.xml" version="4.7.2.." distribution="Windows" importance="recommended" />
     <command name="run" path="go_wrapper.exe" />
     <manifest-digest sha256new="PZEDXD4NCKEGVGALQGFY3JVGV5WWLXTZDKMALOUO5ZVDHTFW5ABA" />
     <recipe>
@@ -23,6 +24,6 @@
   <entry-point command="run" binary-name="Inkeys" />
 </interface>
 <!-- Base64 Signature
-iQEcBAABAgAGBQJpiynUAAoJEHHhcGtCAT0xpnMH/0G8d0L50j9MQ5oVpsOHO28T2WrDgbiQ1F18Uji2CBw5q/yf1yEvZxIM4JbWQIRBqzcGS2rLNAf+T2cyF4/dhfHefDJGEEa/e1RwTH0vpbOJUn9gND+6/RcE5zfbmdepvzS4WkFjMuJatyydC9QBLc2rdPx0JNGV3vRRmDa1mUpTXju5SwCM3lJB60Wj6tkmpoh5Ip7z1j9TNN6P8MIl1NU5smgym19KXnIrCXD4GOsQPRghqDJdmSRar7QTYOfFNYdI1uMEbrRlCvRADj604uatMzbsl4blv/QG9rBDBYEBac2zAET1DdaGCg0YokOmu7RkM5zzSL1A3/K9BYC8UeM=
+iQEcBAABAgAGBQJpi1I4AAoJEHHhcGtCAT0xdaQIAKYC8BzLa56JjC3IRRj/yGNBhHIAGtqaXGXy/4NC1q7y5xdCoQxhirM/6o7C2Hiw79gg7IxgM57ESesFE+yh2a+k/zYLhWBtjzDg48kbDgThvTkczs/+X01kuYhI0w5J8eTJEHl0E0m2amZNm+6CZ+CnnTf7r/zJnxK5DqFoT6Mo436K/QLOxweX+fBJhMoj0tsOEIp/x0djP9pN79EShWcXkxKpwSZqqy45okNnGisHw7giVnMHM6DWcBQv/IRlCWZCcK/0rF1d5WM0UnNz+S7ycHYzyPCWR+RBPpSAnOK9Bd0dWSXJI/dtVVNsQgCYiHPENf1Z4NIwl+NuYQl5Zos=
 
 -->
