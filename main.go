@@ -20,6 +20,7 @@ type Config struct {
 	Force    bool   `json:"force"`
 	LogLevel string `json:"log-level"`
 	Entry    string `json:"entry"`
+	Copy     bool   `json:"copy"`
 }
 
 // 全局变量
@@ -30,6 +31,7 @@ var (
 	force       bool
 	logLevel    string
 	entry       string
+	enableCopy  bool
 	logger      *log.Logger
 	currentDir  string
 	versionFile string
@@ -64,14 +66,25 @@ func init() {
 		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -log-level debug")
 		fmt.Fprintln(os.Stderr, "\n  # Execute entry program after sync")
 		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -entry bin/app.exe")
+		fmt.Fprintln(os.Stderr, "\n  # Enable file copy (default: false)")
+		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -copy")
+		fmt.Fprintln(os.Stderr, "\n  # Run directly from destination directory without copy")
+		fmt.Fprintln(os.Stderr, "  ./go_wrapper.exe -copy=false")
 	}
 
-	// 获取当前目录（源目录）
+	// 获取程序所在目录（源目录）
 	var err error
-	currentDir, err = os.Getwd()
+	execPath, err := os.Executable()
 	if err != nil {
-		log.Fatalf("Failed to get current directory: %v", err)
+		log.Printf("Warning: Failed to get executable path: %v, using current directory instead", err)
+		currentDir, err = os.Getwd()
+		if err != nil {
+			log.Fatalf("Failed to get current directory: %v", err)
+		}
+	} else {
+		currentDir = filepath.Dir(execPath)
 	}
+	log.Printf("Using source directory: %s", currentDir)
 
 	// 设置默认dest值为用户文件夹下的Aiwb_Application
 	if dest == "" {
@@ -84,11 +97,20 @@ func init() {
 	}
 
 	// 检查wrapper.config.json文件是否存在
-	configPath := filepath.Join(currentDir, "wrapper.config.json")
+	// 从程序所在位置获取json文件，而不是当前工作目录
+	execPath, err = os.Executable()
+	if err != nil {
+		log.Printf("Warning: Failed to get executable path: %v, using current directory instead", err)
+		execPath = currentDir
+	}
+	execDir := filepath.Dir(execPath)
+	configPath := filepath.Join(execDir, "wrapper.config.json")
 	configFileExists := false
-	if _, err := os.Stat(configPath); err == nil {
+	if _, err = os.Stat(configPath); err == nil {
 		configFileExists = true
 	}
+	// 使用log.Printf而不是logger.Printf，因为logger还未初始化
+	log.Printf("Looking for config file at: %s", configPath)
 
 	// 从配置文件读取默认值
 	if configFileExists {
@@ -114,6 +136,7 @@ func init() {
 				if config.Entry != "" {
 					entry = config.Entry
 				}
+				enableCopy = config.Copy
 			}
 		}
 	}
@@ -124,6 +147,7 @@ func init() {
 	flag.BoolVar(&force, "force", force, "Force sync, ignore version check")
 	flag.StringVar(&logLevel, "log-level", logLevel, "Log level (debug, info, warn, error)")
 	flag.StringVar(&entry, "entry", entry, "Relative path to entry program to execute after sync")
+	flag.BoolVar(&enableCopy, "copy", enableCopy, "Enable file copy (default: false, run directly from destination directory)")
 	flag.Parse()
 
 	// 验证必需参数
@@ -149,6 +173,7 @@ func main() {
 	logger.Printf("Destination directory: %s", dest)
 	logger.Printf("Force sync: %v", force)
 	logger.Printf("Log level: %s", logLevel)
+	logger.Printf("Enable copy: %v", enableCopy)
 
 	// 获取当前目录的版本标识
 	version := getVersionFromDir(currentDir)
@@ -159,23 +184,27 @@ func main() {
 		logger.Fatalf("Failed to create destination directory: %v", err)
 	}
 
-	// 检查是否需要同步
-	if !force && !needSync(version) {
-		logger.Println("No sync needed, versions match")
-		// 继续执行，不返回，以便执行入口程序
+	// 检查是否需要同步（仅当enableCopy为true时）
+	if enableCopy {
+		if !force && !needSync(version) {
+			logger.Println("No sync needed, versions match")
+			// 继续执行，不返回，以便执行入口程序
+		} else {
+			// 执行同步
+			logger.Println("Starting sync process...")
+			if err := syncDir(currentDir, dest); err != nil {
+				logger.Fatalf("Sync failed: %v", err)
+			}
+
+			// 更新版本文件
+			if err := updateVersionFile(version); err != nil {
+				logger.Fatalf("Failed to update version file: %v", err)
+			}
+
+			logger.Println("Sync completed successfully")
+		}
 	} else {
-		// 执行同步
-		logger.Println("Starting sync process...")
-		if err := syncDir(currentDir, dest); err != nil {
-			logger.Fatalf("Sync failed: %v", err)
-		}
-
-		// 更新版本文件
-		if err := updateVersionFile(version); err != nil {
-			logger.Fatalf("Failed to update version file: %v", err)
-		}
-
-		logger.Println("Sync completed successfully")
+		logger.Println("Copy disabled, running directly from destination directory")
 	}
 
 	// 执行入口程序（如果指定）
@@ -188,7 +217,14 @@ func main() {
 			logger.Printf("Failed to get absolute path for destination directory: %v", err)
 		} else {
 			// 构建入口程序的完整路径
-			entryPath := filepath.Join(dest, entry)
+			var entryPath string
+			if enableCopy {
+				// 当enableCopy=true时，使用目标目录中的入口程序
+				entryPath = filepath.Join(dest, entry)
+			} else {
+				// 当enableCopy=false时，使用源目录中的入口程序
+				entryPath = filepath.Join(currentDir, entry)
+			}
 			logger.Printf("Entry program full path: %s", entryPath)
 
 			// 检查入口程序是否存在
@@ -200,47 +236,62 @@ func main() {
 				if err != nil {
 					logger.Printf("Failed to get absolute path for entry program: %v", err)
 				} else {
-					// 验证入口程序是否在目标目录内，防止路径遍历
-					relPath, err := filepath.Rel(destAbs, absEntryPath)
+					// 获取源目录的绝对路径
+					sourceAbs, err := filepath.Abs(currentDir)
 					if err != nil {
-						logger.Printf("Failed to verify entry program path: %v", err)
-					} else if strings.HasPrefix(relPath, "..") || relPath == ".." {
-						logger.Printf("Entry program path is outside destination directory, refusing to execute: %s", absEntryPath)
+						logger.Printf("Failed to get absolute path for source directory: %v", err)
 					} else {
-						logger.Printf("Entry program absolute path: %s", absEntryPath)
-
-						// 准备命令
-						var cmd *exec.Cmd
-
-						// 在 Windows 上，对于批处理文件，需要通过 cmd.exe 来执行
-						if strings.HasSuffix(strings.ToLower(absEntryPath), ".bat") || strings.HasSuffix(strings.ToLower(absEntryPath), ".cmd") {
-							cmd = exec.Command("cmd.exe", "/c", absEntryPath)
+						// 验证入口程序是否在相应的目录内，防止路径遍历
+						var baseDir string
+						if enableCopy {
+							baseDir = destAbs
 						} else {
-							cmd = exec.Command(absEntryPath)
+							baseDir = sourceAbs
 						}
 
-						// 设置工作目录
-						cmd.Dir = destAbs
-
-						// 传递环境变量（包括0install环境变量）
-						cmd.Env = os.Environ()
-
-						// 设置标准输入/输出/错误
-						cmd.Stdin = os.Stdin
-						cmd.Stdout = os.Stdout
-						cmd.Stderr = os.Stderr
-
-						// 执行命令并处理退出代码
-						err = cmd.Run()
-						if cmd.ProcessState != nil {
-							exitCode := cmd.ProcessState.ExitCode()
-							if err != nil {
-								logger.Printf("Entry program exited with error code: %d, error: %v", exitCode, err)
+						relPath, err := filepath.Rel(baseDir, absEntryPath)
+						if err != nil {
+							logger.Printf("Failed to verify entry program path: %v", err)
+						} else if strings.HasPrefix(relPath, "..") || relPath == ".." {
+							if enableCopy {
+								logger.Printf("Entry program path is outside destination directory, refusing to execute: %s", absEntryPath)
+							} else {
+								logger.Printf("Entry program path is outside source directory, refusing to execute: %s", absEntryPath)
 							}
-							os.Exit(exitCode)
-						} else if err != nil {
-							logger.Printf("Failed to execute entry program: %v", err)
-							os.Exit(1)
+						} else {
+							logger.Printf("Entry program absolute path: %s", absEntryPath)
+
+							// 准备命令
+							var cmd *exec.Cmd
+
+							// 设置工作目录
+							// 对于跨平台支持，直接使用exec.Cmd的Dir字段
+							// 这样可以避免使用特定于操作系统的cd命令
+							cmd = exec.Command(absEntryPath)
+							cmd.Dir = destAbs
+
+							// 传递环境变量（包括0install环境变量）
+							cmd.Env = os.Environ()
+
+							// 设置标准输入/输出/错误
+							cmd.Stdin = os.Stdin
+							cmd.Stdout = os.Stdout
+							cmd.Stderr = os.Stderr
+
+							// 显示执行信息
+							logger.Printf("Changing to directory: %s", destAbs)
+							logger.Printf("Executing command: %s", absEntryPath)
+
+							// 执行命令并直接退出，不等待程序完成
+							err = cmd.Start()
+							if err != nil {
+								logger.Printf("Failed to start entry program: %v", err)
+								os.Exit(1)
+							} else {
+								logger.Printf("Started entry program with PID: %d, exiting wrapper", cmd.Process.Pid)
+								// 直接退出，不等待子进程完成
+								os.Exit(0)
+							}
 						}
 					}
 				}
