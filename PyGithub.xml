@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>PyGithub</name>
+  <summary>Github API for Python</summary>
+  <description>Typed interactions with the GitHub API v3</description>
+  <homepage>https://github.com/PyGithub/PyGithub</homepage>
+
+  <group license="GPL License">
+    <environment name="PYTHONPATH" insert="."/>
+    <implementation version="2.9.0" released="2026-03-22" stability="stable" id="sha1new=6dfcfe86c7061d9d16feae025c10d16d7128f736">
+      <manifest-digest sha256new="J7H7FGAASBFIYDPNTFRFUEV4CLX5M6QAKCTEIHQP3TR5EDXIDIAQ"/>
+      <archive href="https://github.com/PyGithub/PyGithub/archive/v2.9.0.tar.gz" type="application/x-compressed-tar" extract="PyGithub-2.9.0" size="2563495"/>
+    </implementation>
+  </group>
+</interface>
