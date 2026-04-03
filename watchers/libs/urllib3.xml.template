@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>urllib3</name>
+  <summary>HTTP client library for Python</summary>
+  <description>urllib3 is a powerful, user-friendly HTTP client for Python. It supports HTTP/HTTPS, connection pooling, file uploads, and more.</description>
+  <homepage>https://github.com/urllib3/urllib3</homepage>
+
+  <group license="MIT License">
+    <environment name="PYTHONPATH" insert="."/>
+    <implementation version="{version}" released="{released}" stability="stable">
+      <manifest-digest/>
+      <archive href="https://github.com/urllib3/urllib3/archive/{version-original}.tar.gz" type="application/x-compressed-tar" extract="urllib3-{version}"/>
+    </implementation>
+  </group>
+</interface>

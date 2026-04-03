@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>PyJWT</name>
+  <summary>JSON Web Token implementation for Python</summary>
+  <description>PyJWT is a Python library which allows you to encode and decode JSON Web Tokens (JWT). JWT is an open standard (RFC 7519).</description>
+  <homepage>https://github.com/jpadilla/pyjwt</homepage>
+
+  <group license="MIT License">
+    <environment name="PYTHONPATH" insert="."/>
+    <implementation version="{version}" released="{released}" stability="stable">
+      <manifest-digest/>
+      <archive href="https://github.com/jpadilla/pyjwt/archive/{version-original}.tar.gz" type="application/x-compressed-tar" extract="PyJWT-{version}"/>
+    </implementation>
+  </group>
+</interface>

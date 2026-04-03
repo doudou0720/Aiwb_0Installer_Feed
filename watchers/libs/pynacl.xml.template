@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>PyNaCl</name>
+  <summary>Python binding to the NaCl library</summary>
+  <description>PyNaCl is a Python binding to NaCl, a cryptographic library based on Curve25519, XSalsa20, and Poly1305.</description>
+  <homepage>https://github.com/pyca/pynacl</homepage>
+
+  <group license="Apache License 2.0">
+    <environment name="PYTHONPATH" insert="."/>
+    <implementation version="{version}" released="{released}" stability="stable">
+      <manifest-digest/>
+      <archive href="https://github.com/pyca/pynacl/archive/{version-original}.tar.gz" type="application/x-compressed-tar" extract="PyNaCl-{version}"/>
+    </implementation>
+  </group>
+</interface>

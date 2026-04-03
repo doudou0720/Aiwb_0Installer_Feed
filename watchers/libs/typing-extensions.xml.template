@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface">
+  <name>typing-extensions</name>
+  <summary>Backported typing features for older Python versions</summary>
+  <description>typing-extensions provides backports of new typing features to older Python versions. It also includes some experimental features.</description>
+  <homepage>https://github.com/python/typing-extensions</homepage>
+
+  <group license="Python Software Foundation License">
+    <environment name="PYTHONPATH" insert="."/>
+    <implementation version="{version}" released="{released}" stability="stable">
+      <manifest-digest/>
+      <archive href="https://github.com/python/typing-extensions/archive/{version-original}.tar.gz" type="application/x-compressed-tar" extract="typing-extensions-{version}"/>
+    </implementation>
+  </group>
+</interface>
